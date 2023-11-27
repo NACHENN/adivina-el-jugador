@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #slider-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:first-child {
+            left: 10px;
+        }
+
+        button:last-child {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="slider-container">
+    <div class="slide" width="250" height="300">
+        <img src="https://imgs.search.brave.com/8AyBfIYetRP0ZGnQ2HrZx8bN0OsW9t-8u_Mp11P-UR0/rs:fit:560:320:1/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9iL2I0L0xp/b25lbC1NZXNzaS1B/cmdlbnRpbmEtMjAy/Mi1GSUZBLVdvcmxk/LUN1cF8lMjhjcm9w/cGVkJTI5LmpwZy81/MTJweC1MaW9uZWwt/TWVzc2ktQXJnZW50/aW5hLTIwMjItRklG/QS1Xb3JsZC1DdXBf/JTI4Y3JvcHBlZCUy/OS5qcGc" alt="Lionel Messi">
+    </div>
+    <div class="slide">
+        <img src="https://imgs.search.brave.com/6IZqv7whuBph-MaqYnmMuvb9GP1av3UcFgfpDcTWjoY/rs:fit:560:320:1/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9kL2Q3L0Ny/aXN0aWFub19Sb25h/bGRvX3BsYXlpbmdf/Zm9yX0FsX05hc3Ny/X0ZDX2FnYWluc3Rf/UGVyc2Vwb2xpcyUy/Q19TZXB0ZW1iZXJf/MjAyM18lMjhjcm9w/cGVkJTI5LmpwZy81/MTJweC1DcmlzdGlh/bm9fUm9uYWxkb19w/bGF5aW5nX2Zvcl9B/bF9OYXNzcl9GQ19h/Z2FpbnN0X1BlcnNl/cG9saXMlMkNfU2Vw/dGVtYmVyXzIwMjNf/JTI4Y3JvcHBlZCUy/OS5qcGc" alt="Ronaldo">
+    </div>
+    <!-- Puedes agregar más imágenes de Messi según sea necesario -->
+
+    <!-- Botones de navegación -->
+    <button onclick="prevSlide()">Anterior</button> 
+    <button onclick="nextSlide()">Siguiente</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.display = (i === index) ? 'block' : 'none';
+        });
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Mostrar el primer slide al cargar la página
+    showSlide(currentSlide);
+</script>
+
+</body>
+</html>
